@@ -9,7 +9,7 @@ export default() => (
          </p>
          <h1>Education</h1>
          <p>
-         In 2009 I finished high school and started working as a machine operator at QTec Moulding. I took a few online classes when I started(2019) my web dev career, but didn't get as much out of it as I have hoped for. I'm now(April 2022) enrolled at 
+         In 2009 I finished high school and started working as a machine operator at QTec Moulding. I took a few online classes when I started(2019) my web dev career, but didn't get as much out of it as I have hoped for.
          </p>
      </div>
       
