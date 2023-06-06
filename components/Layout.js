@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import Head from "next/head"
+import { useRouter } from 'next/router';
 const contentContainer = {
    border: "1px solid #2a2a2a",
    boxShadow: "0 0 5px #b1b1b1",
@@ -14,17 +15,26 @@ const contentContainer = {
 }
 
 export default (props) => {
+   const router = useRouter();
 
-   function gtags() {
-
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-         dataLayer.push(arguments)
-      }
-      gtag('js', new Date())
-      gtag('config', 'G-EVKQ64QWY7')
-   }
-
+   useEffect(() => {
+      // Initialize Google Analytics
+      ga.init('YOUR_TRACKING_ID'); // Replace with your own tracking ID
+  
+      // Track initial page view
+      ga.pageview(router.pathname);
+  
+      // Track page view on route change
+      const handleRouteChange = (url) => {
+        ga.pageview(url);
+      };
+      router.events.on('routeChangeComplete', handleRouteChange);
+  
+      // Clean up event listener on unmount
+      return () => {
+        router.events.off('routeChangeComplete', handleRouteChange);
+      };
+    }, []);
 
    return (
 
@@ -37,7 +47,14 @@ export default (props) => {
 
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVKQ64QWY7"></script>
 
-            {gtags}
+            <script>
+            window.dataLayer = window.dataLayer || []
+            function gtag() {
+               dataLayer.push(arguments)
+            }
+            gtag('js', new Date())
+            gtag('config', 'G-EVKQ64QWY7')
+            </script>
 
          </Head>
          <div style={contentContainer}>
