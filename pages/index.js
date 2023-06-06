@@ -2,6 +2,7 @@
 import Layout from '../components/Layout'
 
 export default() => (
+  
    <Layout>
      <div className='about-me-page'>
          <h1>About Me</h1>
